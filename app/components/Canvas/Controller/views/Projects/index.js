@@ -36,7 +36,8 @@ export default class Projects
 
     this.show()
 
-    this.addEventListener()
+    if(this.screen.width > 768)
+      this.addEventListener()
   }
 
   getElements()
@@ -94,12 +95,14 @@ export default class Projects
 
   onMouseOver(index)
   {
+    this.active = index
     this.elements[index].onMouseOver()
   }
 
   onMouseLeave(index)
   {
     this.elements[index].onMouseLeave()
+    this.active = null 
   }
 
   onResize({ screen, viewport })

@@ -17,6 +17,11 @@
     justify-content: center;
 
     gap: 8rem; 
+
+    @include media('<=phone')
+    {
+      flex-direction: column;
+    }
   }
 
   &__media 
@@ -35,6 +40,14 @@
         width: 100%; 
         object-fit: cover;
       }
+    }
+  }
+
+  &__desc 
+  {
+    @include media('<=phone')
+    {
+      font-size: 2.5rem;
     }
   }
 }

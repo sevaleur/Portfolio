@@ -14,6 +14,7 @@ export default class Home
 
     this.group = new Group()
 
+    this.createTouch()
     this.createElements()
 
     this.onResize({ screen, viewport })
@@ -21,6 +22,15 @@ export default class Home
     this.scene.add(this.group)
 
     this.show()
+  }
+
+  createTouch()
+  {
+    this.touch = {
+      position: 0.0, 
+      current: 0.0, 
+      target: 0.0
+    }
   }
 
   createElements()
@@ -47,9 +57,6 @@ export default class Home
 
   onResize({screen, viewport})
   {
-    //this.createBounds()
-
-    
     this.element.onResize({ screen, viewport })
   }
 

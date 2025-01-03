@@ -22,6 +22,10 @@
     @extend %title-20; 
     letter-spacing: 0.5rem;
 
+    @include media('<=phone')
+    {
+      font-size: 3rem;
+    }
   }
 
   &__contact 
@@ -32,11 +36,17 @@
 
     transform: translateX(-50%);
 
+    @include media('<=phone')
+    {
+      display: none; 
+    }
+
     &__text 
     {
       @extend %link__center--hidden;
     }
   }
+  
 
   &__menu 
   {
@@ -54,6 +64,11 @@
     {
       @extend %desc-16; 
       @extend %link__center--hidden;
+
+      @include media('<=phone')
+      {
+        font-size: 3rem;
+      }
     }
   }
 }

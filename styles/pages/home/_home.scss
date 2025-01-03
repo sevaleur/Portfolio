@@ -16,6 +16,15 @@
     position: absolute; 
     bottom: 4rem; 
     right: 4rem;
+
+    @include media('<=phone')
+    {
+      font-size: 3rem; 
+      right: auto; 
+      left: 50%; 
+      transform: translateX(-50%);
+      white-space:nowrap;
+    }
   }
 
   &__slogan 
@@ -30,5 +39,7 @@
     position: absolute; 
     bottom: 4rem; 
     left: 4rem;
+
+    display: none; 
   }
 }

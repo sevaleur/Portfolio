@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 
-import Page from '../../classes/Page'
-import Show from '../../animations/Show'
+import Page from 'classes/Page'
 
 export default class Project extends Page
 {
@@ -22,18 +21,21 @@ export default class Project extends Page
     {
       super.create()
 
-      this.scaleBorder = gsap.fromTo(
-        this.elements.visitBorder, 
-        {
-          scaleX: 0, 
-        }, 
-        {
-          scaleX: 1, 
-          duration: 0.5, 
-          ease: 'power2.inOut', 
-          paused: true
-        }
-      )
+      if(window.innerWidth > 768)
+      {
+        this.scaleBorder = gsap.fromTo(
+          this.elements.visitBorder, 
+          {
+            scaleX: 0, 
+          }, 
+          {
+            scaleX: 1, 
+            duration: 0.5, 
+            ease: 'power2.inOut', 
+            paused: true
+          }
+        )
+      }
     }
 
     show()
@@ -60,15 +62,21 @@ export default class Project extends Page
     {
       super.addEventListeners()
 
-      this.elements.visitLink.addEventListener('mouseover', this.onMouseOver.bind(this))
-      this.elements.visitLink.addEventListener('mouseleave', this.onMouseLeave.bind(this))
+      if(window.innerWidth > 768)
+      {
+        this.elements.visitLink.addEventListener('mouseover', this.onMouseOver.bind(this))
+        this.elements.visitLink.addEventListener('mouseleave', this.onMouseLeave.bind(this))
+      }
     }
 
     removeEventListeners()
     {
       super.removeEventListeners()
 
-      this.elements.visitLink.removeEventListener('mouseover', this.onMouseOver)
-      this.elements.visitLink.removeEventListener('mouseleave', this.onMouseLeave)
+      if(window.innerWidth > 768)
+      {
+        this.elements.visitLink.removeEventListener('mouseover', this.onMouseOver)
+        this.elements.visitLink.removeEventListener('mouseleave', this.onMouseLeave)
+      }
     }
 }

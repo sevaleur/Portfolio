@@ -13,6 +13,13 @@
     left: 50%; 
 
     transform: translate(-50%, -50%);
+
+    @include media('<=phone')
+    {
+      display: flex; 
+      flex-direction: column;
+      gap: 4rem; 
+    }
   }
 
   &__project 
@@ -21,6 +28,11 @@
     gap: 2rem;
 
     position: relative;
+
+    @include media('<=phone')
+    {
+      align-items: center;
+    }
 
     &__link 
     {
@@ -57,6 +69,11 @@
     {
       @extend %title-120; 
       text-transform: uppercase;
+
+      @include media('<=phone')
+      {
+        font-size: 6rem;
+      }
     }
 
     &__demo 

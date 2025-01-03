@@ -16,7 +16,10 @@
 
     &__text 
     {
-
+      @include media('<=phone')
+      {
+        font-size: 3rem;
+      }
     }
   }
 }

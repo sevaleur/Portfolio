@@ -4,6 +4,11 @@
 
   z-index: z('content');
 
+  &__wrapper 
+  {
+    
+  }
+
   &__media 
   {
     height: 65rem; 
@@ -37,6 +42,12 @@
 
     height:fit-content; 
 
+    @include media('<=phone')
+    {
+      flex-direction: column;
+      gap: 5rem; 
+    }
+
     &__left 
     {
       &__title 
@@ -44,6 +55,11 @@
         @extend %title-120; 
 
         text-transform: uppercase;
+
+        @include media('<=phone')
+        {
+          font-size: 7rem;
+        }
       }
       
       &__sub 
@@ -51,9 +67,22 @@
         display: flex; 
         justify-content: space-between;
 
+        &__year 
+        {
+          @include media('<=phone')
+          {
+            font-size: 3rem;
+          }
+        }
+
         &__visit 
         {
           position: relative; 
+
+          @include media('<=phone')
+          {
+            font-size: 3rem;
+          }
 
           &__border
           {
@@ -66,6 +95,11 @@
             background: $color-white-smoke; 
 
             transform: scaleX(0);
+
+            @include media('<=phone')
+            {
+              transform: scaleX(1);
+            }
           }
         }
       }
@@ -76,6 +110,11 @@
       width: 50rem; 
 
       align-self: flex-start;
+
+      @include media('<=phone')
+      {
+        width: 100%; 
+      }
 
 
       &__media 
@@ -90,10 +129,24 @@
 
         padding: 1rem; 
 
+        @include media('<=phone')
+        {
+          gap: 8rem; 
+          padding: 6rem;
+          
+          justify-content: center;
+        }
+
         &__element 
         {
           height: 2.5rem; 
           width: 2.5rem; 
+
+          @include media('<=phone')
+          {
+            height: 7rem; 
+            width: 7rem; 
+          }
 
           &__figure 
           {
@@ -117,6 +170,14 @@
         display: flex; 
         flex-direction: column;
         gap: 0.5rem; 
+
+        @include media('<=phone')
+        {
+          padding-top:8rem; 
+          margin-top: 0; 
+          font-size: 3rem;
+          gap: 1.5rem;
+        }
       }
     }
   }
@@ -131,6 +192,13 @@
     display: grid; 
     place-content: center;
 
+    @include media('<=phone')
+    {
+      height: 100%; 
+      padding: 0; 
+      padding-top:8rem; 
+    }
+
     &__desk
     {
       display: flex; 
@@ -138,10 +206,23 @@
 
       align-items: center;
 
+      @include media('<=phone')
+      {
+        flex-direction: column;
+
+        padding: 0 4rem; 
+      }
+
       &__media 
       {
         height: 44rem; 
         width: 60rem; 
+
+        @include media('<=phone')
+        {
+          width: 100%; 
+          height:auto; 
+        }
 
         &__figure 
         {
@@ -165,11 +246,23 @@
 
       align-items: center;
 
+      @include media('<=phone')
+      {
+        flex-direction: column;
+
+        padding: 0 4rem; 
+      }
 
       &__media 
       {
         height: 44rem; 
         width: 60rem; 
+
+        @include media('<=phone')
+        {
+          width: 100%; 
+          height: auto; 
+        }
 
         &__figure 
         {

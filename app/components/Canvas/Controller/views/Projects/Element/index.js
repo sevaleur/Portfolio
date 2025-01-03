@@ -87,7 +87,8 @@ export default class Element
 
   show()
   {
-    //this.onAlphaChange.play()
+    if(this.screen.width <=768)
+      this.onAlphaChange.play()
   }
 
   hide()
