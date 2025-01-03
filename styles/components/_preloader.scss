@@ -1,0 +1,22 @@
+.preloader 
+{
+  @extend %cover; 
+
+  background: #232323; 
+
+  z-index: z('preloader');
+
+  &__number 
+  {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+
+    transform: translate(-50%, -50%);
+
+    &__text 
+    {
+
+    }
+  }
+}

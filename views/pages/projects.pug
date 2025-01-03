@@ -1,0 +1,16 @@
+extends ../base.pug
+
+block variables
+  - var template = 'projects'
+
+block content
+  .projects
+    .projects__wrapper 
+      each project in projects.showcase 
+        .projects__project
+          a.projects__project__link.inside__link(href=Link=(`${project._type}/${project.slug}`) aria-label=project.title)
+          .projects__project__media 
+            figure.projects__project__media__figure 
+              img.projects__project__media__figure__image(data-src=Build.image(project.preview.asset._ref).url() alt=project.preview.alt)
+          .projects__project__title 
+            p.projects__project__title__text=project.title

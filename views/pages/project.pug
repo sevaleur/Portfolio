@@ -1,0 +1,51 @@
+extends ../base.pug
+
+block variables
+  - var template = 'project'
+
+block content
+  .project
+    .project__wrapper
+      .project__media 
+        figure.project__media__figure 
+          img.project__media__figure__image(data-src=Build.image(project.image.asset._ref).url() alt=project.image.alt)
+      .project__text 
+        .project__text__left.outside__link
+          a.project__text__left__sub__visit__link(href=(project.link))
+            .project__text__left__title
+              h1.project__text__left__title__text=project.title
+            .project__text__left__sub 
+              .project__text__left__sub__year 
+                p.project__text__left__sub__year__text=project.year
+              .project__text__left__sub__visit 
+                p.project__text__left__sub__visit__text visit site
+                .project__text__left__sub__visit__border
+        if project.demo
+          .project__text__mid 
+            .project__text__mid__pitched 
+              p.project__text__mid__pitched__text=`(pitched)`
+        .project__text__right 
+          .project__text__right__media 
+            each el in project.tech 
+              .project__text__right__media__element 
+                figure.project__text__right__media__element__figure
+                  img.project__text__right__media__element__figure__image(data-src=Build.image(el.asset._ref).url() alt=el.alt)
+          .project__text__right__text 
+            .project__text__right__text__designer
+              p.project__text__right__text__designer__text=`designer: ${project.designer}`
+            .project__text__right__text__developer
+              p.project__text__right__text__developer__text=`developer: ${project.developer}`
+      .project__desc
+        .project__desc__desk
+          .project__desc__desk__media 
+            figure.project__desc__desk__media__figure 
+              img.project__desc__desk__media__figure__image(data-src=Build.image(project.desktop.asset._ref).url() alt=project.desktop.alt)
+          .project__desc__desk__info 
+            p.project__desc__desk__info__text!=project.deskdesc.replace(/\n/g, '<br>')
+        .project__desc__phone
+          .project__desc__phone__info 
+            p.project__desc__phone__info__text!=project.mobiledesc.replace(/\n/g, '<br>')
+          .project__desc__phone__media 
+            figure.project__desc__phone__media__figure 
+              img.project__desc__phone__media__figure__image(data-src=Build.image(project.phone.asset._ref).url() alt=project.phone.alt)
+      

@@ -1,0 +1,11 @@
+extends ../base.pug
+
+block variables
+  - var template = 'home'
+
+block content
+  .home
+    .home__occupation 
+      p.home__occupation__text=home.desc 
+    .home__slogan 
+      p.home__slogan__text=home.txt

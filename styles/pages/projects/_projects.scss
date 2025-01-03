@@ -1,0 +1,67 @@
+.projects 
+{
+  @extend %cover;
+
+  position: relative; 
+
+  z-index: z('content');
+
+  &__wrapper 
+  {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+
+    transform: translate(-50%, -50%);
+  }
+
+  &__project 
+  {
+    display: flex; 
+    gap: 2rem;
+
+    position: relative;
+
+    &__link 
+    {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      height: 100%; 
+      width: 100%; 
+    }
+    
+    &__media 
+    {
+      height: 10rem; 
+      width: 12rem; 
+
+      visibility: hidden;
+
+      &__figure 
+      {
+        height: 100%; 
+        width: 100%; 
+
+        &__image 
+        {
+          height: 100%; 
+          width: 100%; 
+
+          object-fit: cover; 
+        }
+      }
+    }
+
+    &__title 
+    {
+      @extend %title-120; 
+      text-transform: uppercase;
+    }
+
+    &__demo 
+    {
+      
+    }
+  }
+}

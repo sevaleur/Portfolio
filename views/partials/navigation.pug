@@ -1,0 +1,15 @@
+nav.navigation
+  .navigation__wrapper
+    .navigation__title 
+      a.navigation__title__link.inside__link(href=Link('/'))
+        h2.navigation__title__text=navigation.title 
+    .navigation__contact.outside__link
+      a.navigation__contact__link(href=`mailto:${navigation.email}`)
+        p.navigation__contact__text say hello
+    .navigation__menu 
+      ul.navigation__list
+        each item in navigation.nav_items
+          li.navigation__list__item
+            a.navigation__list__item__link.hidden.inside__link(href=Link(item) data-path=item._type)
+              p.navigation__list__item__link__text=item.title 
+  
