@@ -11,8 +11,9 @@ export default class Project extends Page
         element: '.project',
         elements: {
           wrapper: '.project__wrapper', 
-          visitLink: '.project__text__left__sub__visit__link',
-          visitBorder: '.project__text__left__sub__visit__border'
+          linkDivs: '.link__div',
+          linkBorders: '.link__border', 
+          externalIcon: '.externalLinkIcon'
         }
       })
     }
@@ -21,20 +22,44 @@ export default class Project extends Page
     {
       super.create()
 
+      this.project={
+        anims: {
+          linkBorders: {}, 
+          linkIcons: {}
+        }
+      }
+
       if(window.innerWidth > 768)
       {
-        this.scaleBorder = gsap.fromTo(
-          this.elements.visitBorder, 
-          {
-            scaleX: 0, 
-          }, 
-          {
-            scaleX: 1, 
-            duration: 0.5, 
-            ease: 'power2.inOut', 
-            paused: true
-          }
-        )
+        this.elements.linkBorders.forEach((el,idx) => {
+          this.project.anims.linkBorders[idx] = gsap.fromTo(
+            el, 
+            {
+              scaleX: 0, 
+            }, 
+            {
+              scaleX: 1, 
+              duration: 0.5, 
+              ease: 'power2.inOut', 
+              paused: true
+            }
+          )
+
+          this.project.anims.linkIcons[idx] = gsap.fromTo(
+            this.elements.externalIcon[idx], 
+            {
+              scale: 0,
+              yPercent: 0
+            }, 
+            {
+              scale: 1, 
+              yPercent: -50,
+              duration: 0.5, 
+              ease: 'expo.inOut', 
+              paused: true
+            }
+          )
+        })
       }
     }
 
@@ -48,14 +73,16 @@ export default class Project extends Page
       super.hide()
     }
 
-    onMouseOver()
+    onMouseOver(idx)
     {
-      this.scaleBorder.play()
+      this.project.anims.linkBorders[idx].play()
+      this.project.anims.linkIcons[idx].play()
     }
 
-    onMouseLeave()
+    onMouseLeave(idx)
     {
-      this.scaleBorder.reverse()
+      this.project.anims.linkBorders[idx].reverse()
+      this.project.anims.linkIcons[idx].reverse()
     } 
 
     addEventListeners()
@@ -64,8 +91,10 @@ export default class Project extends Page
 
       if(window.innerWidth > 768)
       {
-        this.elements.visitLink.addEventListener('mouseover', this.onMouseOver.bind(this))
-        this.elements.visitLink.addEventListener('mouseleave', this.onMouseLeave.bind(this))
+        this.elements.linkDivs.forEach((el, idx) => {
+          el.addEventListener('mouseover', this.onMouseOver.bind(this, idx))
+          el.addEventListener('mouseleave', this.onMouseLeave.bind(this, idx))
+        })
       }
     }
 
@@ -75,8 +104,10 @@ export default class Project extends Page
 
       if(window.innerWidth > 768)
       {
-        this.elements.visitLink.removeEventListener('mouseover', this.onMouseOver)
-        this.elements.visitLink.removeEventListener('mouseleave', this.onMouseLeave)
+        this.elements.linkDivs.forEach((el, idx) => {
+          el.removeEventListener('mouseover', this.onMouseOver)
+          el.removeEventListener('mouseleave', this.onMouseLeave)
+        })
       }
     }
 }

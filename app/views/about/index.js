@@ -10,6 +10,7 @@ export default class About extends Page
         id: 'about',
         element: '.about',
         elements: {
+          portrait: '.about__media__figure__image'
         }
       })
     }
@@ -18,15 +19,30 @@ export default class About extends Page
     {
       super.create()
 
+      this.onShow = gsap.fromTo(
+        this.elements.portrait, 
+        {
+          opacity: 0
+        }, 
+        {
+          opacity: 1.0,  
+          ease: 'power2.inOut',
+          paused: true
+        }
+      )
     }
 
     show()
     {
       super.show()
+
+      this.onShow.play()
     }
 
     hide()
     {
       super.hide()
+
+      this.onShow.reverse()
     }
 }

@@ -8,6 +8,6 @@ block content
     .about__wrapper
       .about__media 
         figure.about__media__figure 
-          img.about__media__figure__image.loaded(src=Build.image(about.image.asset._ref).url() alt=about.image.alt)
+          img.about__media__figure__image(src=Build.image(about.image.asset._ref).url() alt=about.image.alt)
       .about__desc 
         p.about__desc__text!=about.desc.replace(/\n/g, '<br>')

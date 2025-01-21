@@ -29,6 +29,11 @@
     width: 30rem; 
     height: 42rem; 
 
+    @include media('<=phone')
+    {
+      height: 30rem; 
+    }
+
     &__figure 
     {
       height: 100%; 
@@ -39,6 +44,11 @@
         height: 100%; 
         width: 100%; 
         object-fit: cover;
+
+        @include media('<=phone')
+        {
+          border-radius: 100%;
+        }
       }
     }
   }
@@ -48,6 +58,7 @@
     @include media('<=phone')
     {
       font-size: 2.5rem;
+      white-space: nowrap;
     }
   }
 }

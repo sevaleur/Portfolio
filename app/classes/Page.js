@@ -204,8 +204,10 @@ export default class Page
 
   onResize()
   {
-    if(this.elements.wrapper)
+    if(this.elements.wrapper && window.innerWidth > 768)
       this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
+    else if(this.elements.wrapper && window.innerWidth <= 768)
+      this.scroll.limit = this.elements.wrapper.clientHeight
 
     each(this.animations, animation => animation.onResize())
   }

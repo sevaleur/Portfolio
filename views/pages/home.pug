@@ -9,4 +9,8 @@ block content
       p.home__occupation__text=home.desc 
     .home__slogan 
       p.home__slogan__text=home.txt
+    if device !== 'desktop'
+      .home__contact.outside__link
+        a.home__contact__link(href=`mailto:${navigation.email}`)
+          p.home__contact__text say hello
         

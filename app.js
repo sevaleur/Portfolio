@@ -9,10 +9,13 @@ const express = require('express')
 const app = express()
 
 const path = require('path')
+const device = require('express-device')
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+
+app.use(device.capture())
 
 const endpoint = process.env.ENDPOINT
 const projectId = process.env.PROJECT_ID
@@ -73,7 +76,8 @@ const handleAssets = async() =>
     encodeURIComponent(
       `*[_type == "project"]{
         image,
-        preview
+        preview, 
+        linkIcon
       }`
     )
   )
@@ -90,6 +94,25 @@ const handleAssets = async() =>
         this.assets.push(prevSrc)
     }
   )
+
+  let projectIcon = build.image(all_projects.result[0].linkIcon.asset._ref).url()
+
+  if(!this.assets.includes(projectIcon))
+    this.assets.push(projectIcon)
+
+
+  const about = await url(
+    encodeURIComponent(
+      `*[_type == "about"]{
+        image
+      }`
+    )
+  )
+
+  let portrait = build.image(about.result[0].image.asset._ref).url()
+  
+  if(!this.assets.includes(portrait))
+    this.assets.push(portrait)
 }
 
 const handleReq = async(req) => 
@@ -115,6 +138,7 @@ const handleReq = async(req) =>
     meta: meta.result[0],
     navigation: navigation.result[0],
     assets: this.assets, 
+    device: req.device.type
   }
 }
 

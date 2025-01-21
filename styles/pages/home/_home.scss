@@ -4,6 +4,8 @@
 
   position: relative; 
 
+  z-index: z('content');
+
   &__occupation
   {
     @extend %desc-16; 
@@ -19,10 +21,9 @@
 
     @include media('<=phone')
     {
-      font-size: 3rem; 
+      font-size: 2.5rem; 
       right: auto; 
-      left: 50%; 
-      transform: translateX(-50%);
+      left: 4rem; 
       white-space:nowrap;
     }
   }
@@ -40,6 +41,18 @@
     bottom: 4rem; 
     left: 4rem;
 
-    display: none; 
+    @include media('<=phone')
+    {
+      display: none; 
+    }
+  }
+
+  &__contact 
+  {
+    position: absolute; 
+    bottom: 4rem; 
+    right: 4rem; 
+
+    font-size: 2.5rem;
   }
 }
